@@ -1,5 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  /* width: 100%; */
+  /* height: 100%; */
 }
 
 /* Full-width input fields */
@@ -130,3 +132,61 @@ span.psw {
   }
 }
 /* 
+/* ///////////////////styling home div ////////////////// */
+
+.column {
+  width: 100px;
+  align-items: center;
+  /* float: left; */
+}
+
+#adding {
+  /* align-content: center; */
+  /* float: left; */
+  width: 25rem;
+  margin-top: 2rem;
+  margin-left: 44rem;
+  border-radius: 1rem;
+  /* position: fixed; */
+}
+#productsTable {
+  width: 100%;
+}
+#home {
+  width: 50%;
+  margin-left: 30rem;
+  margin-top: 4rem;
+  overflow-y: scroll;
+  height: 500px;
+  border-style: double;
+  padding: 40px;
+}
+
+.delete {
+  background-color: red;
+}
+.namespace {
+  /* border-style: double; */
+  width: 500px;
+  height: 40px;
+  text-align: left;
+  font-size: 30px;
+  float: left;
+}
+
+.btn {
+  width: 80%;
+  height: 40px;
+  float: right;
+  border-radius: 1rem;
+}
+/* footer {
+  text-align: center;
+  background-color: lightslategray;
+  color: white;
+  width: 100%;
+  /* height: 10%; */
+
+#add {
+  border-radius: 1rem;
+}

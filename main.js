@@ -39,10 +39,11 @@ function createProduct(product) {
 
 
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
-    $("#row" + counter).append('<td class="column">' + product.name + '</td>')
-    $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn" ><i class="fa fa-trash"></i></button></tr>')
+    $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
     $("#row" + counter).append('<td><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn"  ><i class="fa fa-info"></i></button></tr>')
+
+    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete" ><i class="fa fa-trash"></i></button></tr>')
 
 
 
@@ -93,7 +94,7 @@ function createProduct(product) {
 
 function renderProducts() {
 
-    $("#productsTable").html("<tr><th>Name</th><th  class='column'>Update</th><th  class='column'>Delete</th><th  class='column'>Info</th></tr>")
+    $("#productsTable").html("<tr>hello<th></th><th  class='column'></th><th  class='column'></th><th  class='column'></th></tr>")
     // $("#addForm").hide();
 
     getMyStockage();

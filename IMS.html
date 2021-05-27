@@ -28,21 +28,12 @@
     <div id="id01" class="modal">
       <form
         class="modal-content animate"
-        action="/action_page.php"
-        method="post"
+
       >
-        <div class="imgcontainer">
-          <span
-            onclick="document.getElementById('id01').style.display='none'"
-            class="close"
-            title="Close Modal"
-            >&times;</span
-          >
-          <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
-        </div>
+        
 
         <div class="container">
-          <label><b>Product Name</b></label>
+          <label ><b>Product Name</b></label>
           <input
             id="nameProduct"
             type="text"
@@ -50,7 +41,7 @@
             required
           />
 
-          <label><b>Description</b></label>
+          <label ><b>Description</b></label>
           <input
             id="descriptionProduct"
             type="text"
@@ -59,7 +50,7 @@
             required
           />
 
-          <label><b>Quantity</b></label>
+          <label><b >Quantity</b></label>
           <input
             id="quantityProduct"
             type="number"
@@ -67,7 +58,7 @@
             required
           />
 
-          <label><b>Supplier</b></label>
+          <label ><b>Supplier</b></label>
           <input
             id="supplier"
             type="text"
@@ -89,6 +80,38 @@
             class="cancelbtn"
           >
             Confirm
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="id02" class="modal">
+      <form
+        class="modal-content animate"
+      
+      >
+        
+        <div class="container">
+          <label id="productNameLabel" > hello</label>
+          
+
+          <div id="productDescriptionLabel"></div>
+          
+
+          <label id="productQuantityLabel"></label>
+          
+
+          <label id="productSupplierLabel"></label>
+          
+
+          <label id="productPriceLabel"></label>
+          
+          <button
+            id="close"
+            onclick='document.getElementById("id02").style.display="none"'
+            type="button"
+            class="cancelbtn"
+          >
+            Close
           </button>
         </div>
       </form>

@@ -41,8 +41,10 @@ function createProduct(product) {
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
     $("#row" + counter).append('<td><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
+
     $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-info"></i></button></tr>')
     $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete" ><i class="fa fa-trash"></i></button></tr>')
+
 
 
     $("#btndelete" + counter).click(function () {
@@ -60,13 +62,36 @@ function createProduct(product) {
         }
     })
 
+///fixing error that is invoked twice at 15:06
+    $("#btnupdate" + counter).click(function(){
+    
+    products.splice(products.indexOf(product),1)
+    setMyStockage()
 
-    $("#btnupdate" + counter).click(function () {
 
-        updateProduct(product.name);
-    })
+    $("#nameProduct").val(product["name"])
+    $("#descriptionProduct").val(product["description"])
+    console.log(product["quantity"])
+    $("#quantityProduct").val(product["quantity"])
+    $("#supplier").val(product['supplier'])
+    $("#priceProduct").val(product['price'])
+    });
+///for display a product at 15:37
+    $('#btninfo' + counter).click(function(){
+        console.log("ia m product", product)
+     
+     $("#productNameLabel").html("Product Name: "+product.name)
+     console.log( $("#productNameLabel").html())
+     $("#productDescriptionLabel").html("Description: "+product.description)
+     
+     $("#productQuantityLabel").html("Quantity: "+product.quantity)
+     $("#productSupplierLabel").html("Supplier: "+product.supplier)
+     $("#productPriceLabel").html("Price: "+product.price)
+     document.getElementById("id02").style.display="block"
+    });
     counter++;
 }
+
 function renderProducts() {
 
     $("#productsTable").html("<tr>hello<th></th><th  class='column'></th><th  class='column'></th><th  class='column'></th></tr>")
@@ -96,7 +121,7 @@ function addButton(event) {
     var product = {}
     product["name"] = $("#nameProduct").val()
     product["description"] = $("#descriptionProduct").val()
-    product['quantityProduct'] = $("#quantityProduct").val()
+    product['quantity'] = $("#quantityProduct").val()
     product['supplier'] = $("#supplier").val()
     product['price'] = $("#priceProduct").val()
     console.log("before add", products)
@@ -108,27 +133,7 @@ function addButton(event) {
     return;
 }
 
-// $('#add').click(addButton)
 
-function updateProduct(name) {
-    var product = {}
-    for (var i = 0; i < products.length; i++) {
-        if (name === products[i].name) {
-            product = products[i]
-            products.splice(i, 1)
-            console.log("it is deleted ", products)
-        }
-    }
-    setMyStockage()
-
-
-    $("#nameProduct").val(product["name"])
-    $("#descriptionProduct").val(product["description"])
-    $("#quantityProduct").val(product['quantity'])
-    $("#supplier").val(product['supplier'])
-    $("#priceProduct").val(product['price'])
-
-}
 function initializeLocalStorage() {
     if (!JSON.parse(localStorage.getItem('products'))) {
         setMyStockage();

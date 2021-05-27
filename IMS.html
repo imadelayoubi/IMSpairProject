@@ -18,11 +18,14 @@
     <title>IMS</title>
   </head>
   <body>
-    <h1>List of products</h1>
-    <div>
+    <h1 id="listofproducts">List of products</h1>
+    <div id="home">
       <table id="productsTable"></table>
     </div>
-    <button onclick="document.getElementById('id01').style.display='block'">
+    <button
+      id="adding"
+      onclick="document.getElementById('id01').style.display='block'"
+    >
       <i class="fa fa-plus-square"></i>
     </button>
     <div id="id01" class="modal">
@@ -93,6 +96,10 @@
         </div>
       </form>
     </div>
+    <footer>
+      <p>Author: Hege Refsnes</p>
+      <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+    </footer>
     <script src="main.js"></script>
   </body>
 </html>

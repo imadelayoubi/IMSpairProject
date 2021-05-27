@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Add icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- <meta name="viewport" content="width=initial-scale=1.0" /> -->
     <link rel="stylesheet" href="style.css" />
     <script
@@ -13,43 +18,81 @@
     <title>IMS</title>
   </head>
   <body>
-    <table>
-      <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
-      <tr>
-        <td>Ernst Handel</td>
-        <td>Roland Mendel</td>
-        <td>Austria</td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td>Helen Bennett</td>
-        <td>UK</td>
-      </tr>
-      <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td>Yoshi Tannamuri</td>
-        <td>Canada</td>
-      </tr>
-      <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td>Giovanni Rovelli</td>
-        <td>Italy</td>
-      </tr>
-    </table>
+    <h1>List of products</h1>
+    <div>
+      <table id="productsTable"></table>
+    </div>
+    <button onclick="document.getElementById('id01').style.display='block'">
+      <i class="fa fa-plus-square"></i>
+    </button>
+    <div id="id01" class="modal">
+      <form
+        class="modal-content animate"
+        action="/action_page.php"
+        method="post"
+      >
+        <div class="imgcontainer">
+          <span
+            onclick="document.getElementById('id01').style.display='none'"
+            class="close"
+            title="Close Modal"
+            >&times;</span
+          >
+          <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+        </div>
+
+        <div class="container">
+          <label><b>Product Name</b></label>
+          <input
+            id="nameProduct"
+            type="text"
+            placeholder="Enter product name"
+            required
+          />
+
+          <label><b>Description</b></label>
+          <input
+            id="descriptionProduct"
+            type="text"
+            placeholder="Enter description of product"
+            n
+            required
+          />
+
+          <label><b>Quantity</b></label>
+          <input
+            id="quantityProduct"
+            type="number"
+            placeholder="Enter quantity"
+            required
+          />
+
+          <label><b>Supplier</b></label>
+          <input
+            id="supplier"
+            type="text"
+            placeholder="Enter supplier company name"
+            required
+          />
+
+          <label><b>Price</b></label>
+          <input
+            id="priceProduct"
+            type="number"
+            placeholder="Enter total price"
+            required
+          />
+          <button
+            id="add"
+            onclick="addButton()"
+            type="button"
+            class="cancelbtn"
+          >
+            Confirm
+          </button>
+        </div>
+      </form>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

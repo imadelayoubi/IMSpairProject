@@ -56,6 +56,7 @@ function createProduct(product) {
                 if (products[i].name === product.name) {
                     products.splice(i, 1)
                     productsHistory.push(product)
+                    console.log(product)
                     setMyStockage();
                     renderProducts();
                     return;
@@ -93,22 +94,76 @@ function createProduct(product) {
     });
     counter++;
 }
-/////show the history at 21:38
-function showHistory() {
-    $("#productsTable").html("")
 
+ /////show the history at 21:38
+ function showHistory(){
+     $("#main").hide()
+     $("#history").show()
+    $("#productsTableHistory").html("")
+    console.log("I am in show hisotry product",productsHistory)
 
     getMyStockage();
     if (productsHistory.length === 0) {
         document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
     } else { document.getElementById("home").style.backgroundImage = ""; }
     for (var i = 0; i < productsHistory.length; i++) {
-        createProduct(productsHistory[i]);
+        createProductHistory(productsHistory[i]);
     }
-    $("#productsTable").show();
+    $("#productsTableHistory").show();
+}
+function clearHistory(){
+    console.log(" I am clear archive")
+    productsHistory.splice(0,productsHistory.length)
+    console.log("table of archive=",productsHistory)
+    setMyStockage();
+    renderProductsHistory();
+}
+function createProductHistory(product) {
+    
+
+    $("#productsTableHistory").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
+    $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
+    
+    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td><button id=btnrestore' + counter + ' class="btn restore" ><i class="fa fa-refresh"></i>restore</button></tr>')
+
+
+
+    $("#btnrestore" + counter).click(function () {
+        
+        var r = confirm("Are you sure to restore this product!\nEither OK or Cancel.\n");
+        if (r == true) {
+            for (var i = 0; i < products.length; i++) {
+                if (productsHistory[i].name === product.name) {
+                    productsHistory.splice(i, 1)
+                    products.push(product)
+                    setMyStockage();
+                    renderProductsHistory()
+                    return;
+                }
+            }
+        }
+    })
+   
+
+   
+    ///for display a product at 15:37
+    $('#btninfo' + counter).click(function () {
+        console.log("ia m product", product)
+
+        $("#productNameLabel").html("Product Name: " + product.name)
+        console.log($("#productNameLabel").html())
+        $("#productDescriptionLabel").html("Description: " + product.description)
+        $("#productQuantityLabel").html("Quantity: " + product.quantity)
+        $("#productSupplierLabel").html("Supplier: " + product.supplier)
+        $("#productPriceLabel").html("Price: " + product.price)
+        document.getElementById("id02").style.display = "block"
+    });
+    counter++;
 }
 function renderProducts() {
-
+    $("#main").show()
+    $("#history").hide()
     $("#productsTable").html("")
 
     getMyStockage();
@@ -118,7 +173,29 @@ function renderProducts() {
     for (var i = 0; i < products.length; i++) {
         createProduct(products[i]);
     }
+    
     $("#productsTable").show();
+}
+function renderProductsHistory() {
+    $("#main").hide()
+    $("#history").show()
+    $("#productsTableHistory").html("")
+    
+    getMyStockage();
+    if(productsHistory.length===0){
+        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
+    }else { document.getElementById("home").style.backgroundImage = "";}
+    for (var i = 0; i < productsHistory.length; i++) {
+        createProductHistory(productsHistory[i]);
+    }
+    
+    $("#productsTableHistory").show();
+}
+function home(){
+	
+
+	renderProducts();
+	
 }
 
 
@@ -144,12 +221,14 @@ function addButton(event) {
 
 function w3_open() {
     document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("history").style.marginLeft = "25%";
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
     document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("history").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
 }

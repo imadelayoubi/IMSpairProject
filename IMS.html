@@ -27,20 +27,47 @@
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
       <button class="w3-bar-item w3-button w3-large"
       onclick="w3_close()">Close &times;</button>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
-      <a href="javascript:showHistory()" class="w3-bar-item w3-button" ><i class="fa fa-history" aria-hidden="true"></i>History</a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user-circle" ></i>Users</a>
+      <a href="javascript:home()" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+      <a href="javascript:showHistory()" class="w3-bar-item w3-button" ><i class="fa fa-history" aria-hidden="true"></i>Archive</a>
+      <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user-circle" ></i>Users</a> -->
       <a href="#" class="w3-bar-item w3-button">About</a>
     </div>
     
-    <div id="main">
     
-    <div class="w3-teal">
-      <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
-      <div class="w3-container">
-        <h1>.IMS(Inventory Managment System)</h1>
+    
+      <div class="w3-teal">
+        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+        <div class="w3-container">
+          <h1>.IMS(Inventory Managment System)</h1>
+        </div>
       </div>
+<div id="main">
+
+
+  <h1 id="listofproducts">Products in stock</h1>
+  <div id="home">
+    <table id="productsTable"></table>
+  </div>
+  <button 
+  id="adding"
+  onclick="document.getElementById('id01').style.display='block'">
+  <i class="fa fa-plus-square"></i>
+</button>
+</div>
+
+    
+    <div id="history">
+    
+     
+      <h1 id="listofproducts">Archive of stock</h1>
+      <div id="home">
+        <table id="productsTableHistory"></table>
+      </div>
+      <button 
+      id="id=btndeleteAll" class="btn delete" onclick="clearHistory()"><i class="fa fa-trash"></i>
+      </button>
     </div>
+
     <h2 id="listofproducts">Products in stock</h2>
     <div id="home">
       <table id="productsTable">
@@ -54,6 +81,7 @@
     onclick="document.getElementById('id01').style.display='block'">
       <i class="fa fa-plus-square"></i>
     </button>
+
     <div id="id01" class="modal">
       <form class="modal-content animate">
         <div class="container1">

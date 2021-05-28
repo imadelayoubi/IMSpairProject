@@ -23,15 +23,18 @@ var products = [
     // }
 
 ]
+productsHistory=[]
 
 
 var counter = 0;
 
 function setMyStockage() {
     localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('productsHistory', JSON.stringify(productsHistory));
 }
 function getMyStockage() {
     products = JSON.parse(localStorage.getItem('products'))
+    productsHistory = JSON.parse(localStorage.getItem('productsHistory'))
 }
 
 function createProduct(product) {
@@ -51,6 +54,7 @@ function createProduct(product) {
             for (var i = 0; i < products.length; i++) {
                 if (products[i].name === product.name) {
                     products.splice(i, 1)
+                    productsHistory.push(product)
                     setMyStockage();
                     renderProducts();
                     return;
@@ -58,6 +62,7 @@ function createProduct(product) {
             }
         }
     })
+   
 
     ///fixing error that is invoked twice at 15:06
     $("#btnupdate" + counter).click(function () {
@@ -87,22 +92,34 @@ function createProduct(product) {
     });
     counter++;
 }
-
-function renderProducts() {
-
-    $("#productsTable").html("<tr>hello<th></th><th  class='column'></th><th  class='column'></th><th  class='column'></th></tr>")
+ /////show the history at 21:38
+ function showHistory(){
+    $("#productsTable").html("")
+    
 
     getMyStockage();
+    if(productsHistory.length===0){
+        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
+    }else { document.getElementById("home").style.backgroundImage = "";}
+    for (var i = 0; i < productsHistory.length; i++) {
+        createProduct(productsHistory[i]);
+    }
+    $("#productsTable").show();
+}
+function renderProducts() {
 
+    $("#productsTable").html("")
+
+    getMyStockage();
+    if(products.length===0){
+        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
+    }else { document.getElementById("home").style.backgroundImage = "";}
     for (var i = 0; i < products.length; i++) {
         createProduct(products[i]);
     }
     $("#productsTable").show();
 }
 
-function home() {
-    renderProducts();
-}
 
 
 
@@ -124,10 +141,24 @@ function addButton(event) {
     return;
 }
 
-
+function w3_open() {
+    document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("mySidebar").style.width = "25%";
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("openNav").style.display = 'none';
+  }
+  function w3_close() {
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
 function initializeLocalStorage() {
     if (!JSON.parse(localStorage.getItem('products'))) {
-        setMyStockage();
+        localStorage.setItem('products', JSON.stringify(products));
+    
+    }
+    if(!JSON.parse(localStorage.getItem('productsHistory'))){
+        localStorage.setItem('productsHistory', JSON.stringify(productsHistory));
     }
 }
 initializeLocalStorage();

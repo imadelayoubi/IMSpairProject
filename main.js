@@ -41,9 +41,9 @@ function createProduct(product) {
 
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
-    $("#row" + counter).append('<td><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn grnbtn" ><i class="fa fa-info"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete redbtn" ><i class="fa fa-trash"></i></button></tr>')
+    $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
+    $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btninfo' + counter + ' class="btn grnbtn" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td style="background-color: red;"><button id=btndelete' + counter + ' class="btn delete redbtn" ><i class="fa fa-trash"></i></button></tr>')
 
 
 
@@ -59,7 +59,6 @@ function createProduct(product) {
                     console.log(product)
                     setMyStockage();
                     renderProducts();
-                    return;
                 }
             }
         }
@@ -89,12 +88,16 @@ function createProduct(product) {
         $("#productDescriptionLabel").html("Description: " + product.description)
         $("#productQuantityLabel").html("Quantity: " + product.quantity)
         $("#productSupplierLabel").html("Supplier: " + product.supplier)
-        $("#productPriceLabel").html("Price: " + product.price)
+        $("#productPriceLabel").html("Price: " + product.price + 'DT')
         document.getElementById("id02").style.display = "block"
     });
     counter++;
 }
 
+/////show the history at 21:38
+// function showHistory() {
+//     $("#main").hide()
+//     $("#history").show()
  /////show the history at 21:38
  function showHistory(){
      $("#main").hide()
@@ -102,7 +105,7 @@ function createProduct(product) {
      $("#searchProduct").hide()
      $("#searchProductHistory").show()
     $("#productsTableHistory").html("")
-    console.log("I am in show hisotry product",productsHistory)
+    console.log("I am in show hisotry product", productsHistory)
 
     getMyStockage();
     if (productsHistory.length === 0) {
@@ -113,26 +116,26 @@ function createProduct(product) {
     }
     $("#productsTableHistory").show();
 }
-function clearHistory(){
+function clearHistory() {
     console.log(" I am clear archive")
-    productsHistory.splice(0,productsHistory.length)
-    console.log("table of archive=",productsHistory)
+    productsHistory.splice(0, productsHistory.length)
+    console.log("table of archive=", productsHistory)
     setMyStockage();
     renderProductsHistory();
 }
 function createProductHistory(product) {
-    
+
 
     $("#productsTableHistory").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
-    
-    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btnrestore' + counter + ' class="btn restore" ><i class="fa fa-refresh"></i>restore</button></tr>')
+
+    $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btnrestore' + counter + ' class="btn restore" ><i class="fa fa-refresh"></i></button></tr>')
 
 
 
     $("#btnrestore" + counter).click(function () {
-        
+
         var r = confirm("Are you sure to restore this product!\nEither OK or Cancel.\n");
         if (r == true) {
             for (var i = 0; i < products.length; i++) {
@@ -146,9 +149,9 @@ function createProductHistory(product) {
             }
         }
     })
-   
 
-   
+
+
     ///for display a product at 15:37
     $('#btninfo' + counter).click(function () {
         console.log("ia m product", product)
@@ -167,8 +170,9 @@ $("#searchProduct").show()
 $("#searchProductHistory").hide()
 function renderProducts() {
     $("#main").show()
-    $("#history").hide()
     $("#productsTable").html("")
+    $("#history").hide()
+
     $("#searchProduct").show()
     $("#searchProductHistory").hide()
      getMyStockage();
@@ -178,7 +182,7 @@ function renderProducts() {
     for (var i = 0; i < products.length; i++) {
         createProduct(products[i]);
     }
-    
+
     $("#productsTable").show();
 }
 function renderProductsHistory() {
@@ -188,9 +192,6 @@ function renderProductsHistory() {
 
     $("#productsTableHistory").html("")
     
-    
-    
-    
      getMyStockage();
     if(productsHistory.length===0){
         document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
@@ -198,19 +199,15 @@ function renderProductsHistory() {
     for (var i = 0; i < productsHistory.length; i++) {
         createProductHistory(productsHistory[i]);
     }
-    
+
     $("#productsTableHistory").show();
 }
-function home(){
-	
+function home() {
 
-	renderProducts();
-	
+
+    renderProducts();
+
 }
-
-
-
-
 
 function addButton(event) {
     // event.preventDefault();

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Add icon library -->
     <link
       rel="stylesheet"
@@ -29,23 +30,20 @@
       <i class="fa fa-plus-square"></i>
     </button>
     <div id="id01" class="modal">
-      <form
-        class="modal-content animate"
-
-      >
-        
-
-        <div class="container">
-          <label ><b>Product Name</b></label>
+      <form class="modal-content animate">
+        <div class="container1">
+          <label><b>Product Name</b></label>
           <input
+            class="addinginputs"
             id="nameProduct"
             type="text"
             placeholder="Enter product name"
             required
           />
 
-          <label ><b>Description</b></label>
+          <label><b>Description</b></label>
           <input
+            class="addinginputs"
             id="descriptionProduct"
             type="text"
             placeholder="Enter description of product"
@@ -53,16 +51,18 @@
             required
           />
 
-          <label><b >Quantity</b></label>
+          <label><b>Quantity</b></label>
           <input
+            class="addinginputs"
             id="quantityProduct"
             type="number"
             placeholder="Enter quantity"
             required
           />
 
-          <label ><b>Supplier</b></label>
+          <label><b>Supplier</b></label>
           <input
+            class="addinginputs"
             id="supplier"
             type="text"
             placeholder="Enter supplier company name"
@@ -71,18 +71,21 @@
 
           <label><b>Price</b></label>
           <input
+            class="addinginputs"
             id="priceProduct"
             type="number"
             placeholder="Enter total price"
             required
           />
-          <button
-            id="add"
-            onclick="addButton()"
-            type="button"
-            class="cancelbtn"
-          >
+          <button onclick="addButton()" type="button" class="cancelbtn">
             Confirm
+          </button>
+          <button
+            id="close1"
+            onclick='document.getElementById("id01").style.display="none"'
+            type="button"
+          >
+            Close
           </button>
         </div>
       </form>
@@ -94,31 +97,17 @@
     </footer>
 
     <div id="id02" class="modal">
-      <form
-        class="modal-content animate"
-      
-      >
-        
+      <form class="modal-content animate">
         <div class="container">
-          <label id="productNameLabel" > hello</label>
-          
-
-          <div id="productDescriptionLabel"></div>
-          
-
-          <label id="productQuantityLabel"></label>
-          
-
-          <label id="productSupplierLabel"></label>
-          
-
-          <label id="productPriceLabel"></label>
-          
+          <p id="productNameLabel"><b></b></p>
+          <p id="productDescriptionLabel"></p>
+          <p id="productQuantityLabel"></p>
+          <p id="productSupplierLabel"></p>
+          <p id="productPriceLabel"></p>
           <button
-            id="close"
+            id="close2"
             onclick='document.getElementById("id02").style.display="none"'
             type="button"
-            class="cancelbtn"
           >
             Close
           </button>

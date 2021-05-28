@@ -36,13 +36,10 @@ function getMyStockage() {
 
 function createProduct(product) {
 
-
-
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
     $("#row" + counter).append('<td><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
-
-    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
     $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete" ><i class="fa fa-trash"></i></button></tr>')
 
 
@@ -62,32 +59,31 @@ function createProduct(product) {
         }
     })
 
-///fixing error that is invoked twice at 15:06
-    $("#btnupdate" + counter).click(function(){
-    
-    products.splice(products.indexOf(product),1)
-    setMyStockage()
+    ///fixing error that is invoked twice at 15:06
+    $("#btnupdate" + counter).click(function () {
+
+        products.splice(products.indexOf(product), 1)
+        setMyStockage()
 
 
-    $("#nameProduct").val(product["name"])
-    $("#descriptionProduct").val(product["description"])
-    console.log(product["quantity"])
-    $("#quantityProduct").val(product["quantity"])
-    $("#supplier").val(product['supplier'])
-    $("#priceProduct").val(product['price'])
+        $("#nameProduct").val(product["name"])
+        $("#descriptionProduct").val(product["description"])
+        console.log(product["quantity"])
+        $("#quantityProduct").val(product["quantity"])
+        $("#supplier").val(product['supplier'])
+        $("#priceProduct").val(product['price'])
     });
-///for display a product at 15:37
-    $('#btninfo' + counter).click(function(){
+    ///for display a product at 15:37
+    $('#btninfo' + counter).click(function () {
         console.log("ia m product", product)
-     
-     $("#productNameLabel").html("Product Name: "+product.name)
-     console.log( $("#productNameLabel").html())
-     $("#productDescriptionLabel").html("Description: "+product.description)
-     
-     $("#productQuantityLabel").html("Quantity: "+product.quantity)
-     $("#productSupplierLabel").html("Supplier: "+product.supplier)
-     $("#productPriceLabel").html("Price: "+product.price)
-     document.getElementById("id02").style.display="block"
+
+        $("#productNameLabel").html("Product Name: " + product.name)
+        console.log($("#productNameLabel").html())
+        $("#productDescriptionLabel").html("Description: " + product.description)
+        $("#productQuantityLabel").html("Quantity: " + product.quantity)
+        $("#productSupplierLabel").html("Supplier: " + product.supplier)
+        $("#productPriceLabel").html("Price: " + product.price)
+        document.getElementById("id02").style.display = "block"
     });
     counter++;
 }
@@ -95,7 +91,6 @@ function createProduct(product) {
 function renderProducts() {
 
     $("#productsTable").html("<tr>hello<th></th><th  class='column'></th><th  class='column'></th><th  class='column'></th></tr>")
-    // $("#addForm").hide();
 
     getMyStockage();
 
@@ -109,11 +104,7 @@ function home() {
     renderProducts();
 }
 
-function printAddForm() {
-    //   $("#row").hide();
-    // $("#addForm").show();
-    // $("#favouriteForm").show().hide();
-}
+
 
 
 function addButton(event) {

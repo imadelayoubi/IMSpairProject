@@ -12,6 +12,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <!-- CSS only -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
     <!-- <meta name="viewport" content="width=initial-scale=1.0" /> -->
     <link rel="stylesheet" href="style.css" />
     <script
@@ -39,9 +41,13 @@
         <h1>.IMS(Inventory Managment System)</h1>
       </div>
     </div>
-    <h1 id="listofproducts">Products in stock</h1>
+    <h2 id="listofproducts">Products in stock</h2>
     <div id="home">
-      <table id="productsTable"></table>
+      <table id="productsTable">
+
+
+
+      </table>
     </div>
     <button 
     id="adding"
@@ -96,11 +102,12 @@
             placeholder="Enter total price"
             required
           />
-          <button onclick="addButton()" type="button" class="cancelbtn">
+          <button onclick="addButton()" type="button" id="confirm" class="cancelbtn">
             Confirm
           </button>
           <button
             id="close1"
+            class="close1"
             onclick='document.getElementById("id01").style.display="none"'
             type="button"
           >
@@ -118,14 +125,15 @@
           <p id="productQuantityLabel"></p>
           <p id="productSupplierLabel"></p>
           <p id="productPriceLabel"></p>
-          <button
-            id="close2"
-            onclick='document.getElementById("id02").style.display="none"'
-            type="button"
-          >
-            Close
-          </button>
         </div>
+        <button
+          id="close2"
+          class="close2"
+          onclick='document.getElementById("id02").style.display="none"'
+          type="button"
+        >
+          Close
+        </button>
       </form>
     </div>
     <script src="main.js"></script>

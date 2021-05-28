@@ -23,7 +23,7 @@ var products = [
     // }
 
 ]
-productsHistory=[]
+productsHistory = []
 
 
 var counter = 0;
@@ -42,8 +42,9 @@ function createProduct(product) {
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
     $("#row" + counter).append('<td><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
-    $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete" ><i class="fa fa-trash"></i></button></tr>')
+    $("#row" + counter).append('<td><button id=btninfo' + counter + ' class="btn grnbtn" ><i class="fa fa-info"></i></button></tr>')
+    $("#row" + counter).append('<td><button id=btndelete' + counter + ' class="btn delete redbtn" ><i class="fa fa-trash"></i></button></tr>')
+
 
 
 
@@ -62,7 +63,7 @@ function createProduct(product) {
             }
         }
     })
-   
+
 
     ///fixing error that is invoked twice at 15:06
     $("#btnupdate" + counter).click(function () {
@@ -92,15 +93,15 @@ function createProduct(product) {
     });
     counter++;
 }
- /////show the history at 21:38
- function showHistory(){
+/////show the history at 21:38
+function showHistory() {
     $("#productsTable").html("")
-    
+
 
     getMyStockage();
-    if(productsHistory.length===0){
-        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
-    }else { document.getElementById("home").style.backgroundImage = "";}
+    if (productsHistory.length === 0) {
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+    } else { document.getElementById("home").style.backgroundImage = ""; }
     for (var i = 0; i < productsHistory.length; i++) {
         createProduct(productsHistory[i]);
     }
@@ -111,9 +112,9 @@ function renderProducts() {
     $("#productsTable").html("")
 
     getMyStockage();
-    if(products.length===0){
-        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
-    }else { document.getElementById("home").style.backgroundImage = "";}
+    if (products.length === 0) {
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+    } else { document.getElementById("home").style.backgroundImage = ""; }
     for (var i = 0; i < products.length; i++) {
         createProduct(products[i]);
     }
@@ -146,18 +147,18 @@ function w3_open() {
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
-  }
-  function w3_close() {
+}
+function w3_close() {
     document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
-  }
+}
 function initializeLocalStorage() {
     if (!JSON.parse(localStorage.getItem('products'))) {
         localStorage.setItem('products', JSON.stringify(products));
-    
+
     }
-    if(!JSON.parse(localStorage.getItem('productsHistory'))){
+    if (!JSON.parse(localStorage.getItem('productsHistory'))) {
         localStorage.setItem('productsHistory', JSON.stringify(productsHistory));
     }
 }

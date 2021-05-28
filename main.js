@@ -296,23 +296,24 @@ function searchProducts(){
 function searchProductsHistory(){
     
     var filteredProducts=[]
-    filteredProducts= filter(products,function(object){
+    filteredProducts= filter(productsHistory,function(object){
         if(object.name.toLowerCase().includes(document.getElementById("searchProductHistory").value.toLowerCase()))
              
        return object})
+       console.log("I am in history search function filtered=",filteredProducts)
 
 
     
        $("#main").hide()
        $("#history").show()
-       $("#productsTable").html("")
+       $("#productsTableHistory").html("")
    
     //    getMyStockage();
        if (filteredProducts.length === 0) {
            document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
        } else { document.getElementById("home").style.backgroundImage = ""; }
        for (var i = 0; i < filteredProducts.length; i++) {
-           createProduct(filteredProducts[i]);
+        createProductHistory(filteredProducts[i]);
        }
        
        $("#productsTableHistory").show();
@@ -332,10 +333,10 @@ input.addEventListener("keyup", function(event) {
   }
 });
 // Get the input field
-var input = document.getElementById("searchProductHistory");
+var inputHistory = document.getElementById("searchProductHistory");
 
 // Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function(event) {
+inputHistory.addEventListener("keyup", function(event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
     // Cancel the default action, if needed

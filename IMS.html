@@ -41,6 +41,16 @@
       <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user-circle" ></i>Users</a> -->
       <a href="#" class="w3-bar-item w3-button">About</a>
     </div>
+    
+      <div class="w3-teal">
+        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+        <div class="w3-container">
+          <h1>.IMS(Inventory Managment System)</h1>
+          <input id="searchProductHistory" type="text" placeholder="Search.." onclick="searchProductsHistory()">
+          <input id="searchProduct" style="color: aqua;" type="text" placeholder="Search.." onclick="searchProducts()">
+        </div>
+      </div>
+<div id="main">
 
     <div class="w3-teal">
       <button
@@ -89,9 +99,14 @@
     onclick="document.getElementById('id01').style.display='block'">
       <i class="fa fa-plus-square"></i>
     </button> -->
+  
 
     <div id="id01" class="modal">
       <form class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          
+        </div>
         <div class="container1">
           <label><b>Product Name</b></label>
           <input
@@ -146,20 +161,18 @@
           >
             Confirm
           </button>
-          <button
-            id="close1"
-            class="close1"
-            onclick='document.getElementById("id01").style.display="none"'
-            type="button"
-          >
-            Close
-          </button>
+          
+           
         </div>
       </form>
     </div>
     <!-- add new form for display -->
     <div id="id02" class="modal">
       <form class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+          
+        </div>
         <div class="container">
           <p id="productNameLabel"><b></b></p>
           <p id="productDescriptionLabel"></p>
@@ -167,14 +180,7 @@
           <p id="productSupplierLabel"></p>
           <p id="productPriceLabel"></p>
         </div>
-        <button
-          id="close2"
-          class="close2"
-          onclick='document.getElementById("id02").style.display="none"'
-          type="button"
-        >
-          Close
-        </button>
+       
       </form>
     </div>
     <script src="main.js"></script>

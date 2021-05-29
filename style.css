@@ -197,8 +197,16 @@ p {
   background-color: red;
 }
 .namespace {
-  /* border-style: double; */
+  
   width: 500px;
+  height: 40px;
+  text-align: left;
+  font-size: 30px;
+  float: left;
+  margin-top: 1.5rem;
+}
+.idspace{
+  width: 30px;
   height: 40px;
   text-align: left;
   font-size: 30px;
@@ -413,4 +421,8 @@ button {
 .close:focus {
   color: red;
   cursor: pointer;
+}
+/*to make in search inpu on same lin as h1*/
+h1{
+  display: inline-block
 }

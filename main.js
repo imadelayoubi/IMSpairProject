@@ -40,6 +40,7 @@ function getMyStockage() {
 function createProduct(product) {
 
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
+    $("#row" + counter).append('<td class="idspace">' + Number(products.indexOf(product) +1) + '</td>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
     $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btnupdate' + counter + ' class="btn" onclick=document.getElementById("id01").style.display="block" ><i class="fa fa-edit"></i></button></tr>')
     $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btninfo' + counter + ' class="btn grnbtn" ><i class="fa fa-info"></i></button></tr>')
@@ -127,6 +128,7 @@ function createProductHistory(product) {
 
 
     $("#productsTableHistory").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
+    $("#row" + counter).append('<td class="idspace">' + Number(productsHistory.indexOf(product) +1) + '</td>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
 
     $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btninfo' + counter + ' class="btn" ><i class="fa fa-info"></i></button></tr>')
@@ -172,6 +174,7 @@ function renderProducts() {
     $("#main").show()
     $("#productsTable").html("")
     $("#history").hide()
+    $("#about").hide()
 
     $("#searchProduct").show()
     $("#searchProductHistory").hide()
@@ -188,6 +191,7 @@ function renderProducts() {
 function renderProductsHistory() {
     $("#main").hide()
     $("#history").show()
+    $("#about").hide()
     console.log("hahahahah")
 
     $("#productsTableHistory").html("")
@@ -229,6 +233,7 @@ function addButton(event) {
 function w3_open() {
     document.getElementById("main").style.marginLeft = "25%";
     document.getElementById("history").style.marginLeft = "25%";
+    document.getElementById("about").style.marginLeft = "25%";
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
@@ -236,6 +241,7 @@ function w3_open() {
 function w3_close() {
     document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("history").style.marginLeft = "0%";
+    document.getElementById("about").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
 }
@@ -345,6 +351,11 @@ inputHistory.addEventListener("keyup", function(event) {
     searchProductsHistory()
   }
 });
+function displayAbout(){
+$("#main").hide()
+$("#history").hide()
+$("#about").show()
+}
 initializeLocalStorage();
 
 renderProducts()

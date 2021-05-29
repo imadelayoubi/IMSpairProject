@@ -39,7 +39,7 @@
         ><i class="fa fa-history" aria-hidden="true"></i>Archive</a
       >
       <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user-circle" ></i>Users</a> -->
-      <a href="#" class="w3-bar-item w3-button">About</a>
+      <a href="javascript:displayAbout()" class="w3-bar-item w3-button">About</a>
     </div>
     
       <div class="w3-teal">
@@ -50,7 +50,7 @@
           <input id="searchProduct" style="color: aqua;" type="text" placeholder="Search.." onclick="searchProducts()">
         </div>
       </div>
-      
+
     <div id="main">
       <h1 id="listofproducts">Products in stock</h1>
       <div id="home">
@@ -76,25 +76,14 @@
       </div>
     </div>
 
-    <!-- <h2 id="listofproducts">Products in stock</h2>
-    <div id="home">
-      <table id="productsTable">
-      </table>
-    </div>
-    <button 
-    id="adding"
-    onclick="document.getElementById('id01').style.display='block'">
-      <i class="fa fa-plus-square"></i>
-    </button> -->
+    
   
 
     <div id="id01" class="modal">
       <form class="modal-content animate">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          
-        </div>
+        
         <div class="container1">
+          <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
           <label><b>Product Name</b></label>
           <input
             class="addinginputs"
@@ -156,16 +145,29 @@
     <!-- add new form for display -->
     <div id="id02" class="modal">
       <form class="modal-content animate">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-          
-        </div>
+        
         <div class="container">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" >&times;</span>
           <p id="productNameLabel"><b></b></p>
           <p id="productDescriptionLabel"></p>
           <p id="productQuantityLabel"></p>
           <p id="productSupplierLabel"></p>
           <p id="productPriceLabel"></p>
+        </div>
+       
+      </form>
+    </div>
+    <!-- about form for display -->
+    <div id="about" >
+      <div class="imgcontainer">
+        <img src="imgs/company.jpg" alt="Avatar" class="avatar">
+      </div>
+        <div class="container">
+          <p id=""><b> Company: </b> Melice</p>
+          <p id=""><b>Telephone: </b> 08839446</p>
+          <p id=""><b>Adresse mail: </b> melice_company@gmail.com</p>
+          <p id=""><b>Adresse: </b> Tunis Chargia 2, bloc O department 1</p>
+          <p id=""><b>Description: </b> We manage wholesale and retail sale of all type of products made in Tunisia</p>
         </div>
        
       </form>

@@ -36,7 +36,7 @@ function getMyStockage() {
     products = JSON.parse(localStorage.getItem('products'))
     productsHistory = JSON.parse(localStorage.getItem('productsHistory'))
 }
-
+var countt = 0
 function createProduct(product) {
 
     $("#productsTable").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
@@ -99,18 +99,18 @@ function createProduct(product) {
 // function showHistory() {
 //     $("#main").hide()
 //     $("#history").show()
- /////show the history at 21:38
- function showHistory(){
-     $("#main").hide()
-     $("#history").show()
-     $("#searchProduct").hide()
-     $("#searchProductHistory").show()
+/////show the history at 21:38
+function showHistory() {
+    $("#main").hide()
+    $("#history").show()
+    $("#searchProduct").hide()
+    $("#searchProductHistory").show()
     $("#productsTableHistory").html("")
     console.log("I am in show hisotry product", productsHistory)
 
     getMyStockage();
     if (productsHistory.length === 0) {
-        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box5.jpg')";
     } else { document.getElementById("home").style.backgroundImage = ""; }
     for (var i = 0; i < productsHistory.length; i++) {
         createProductHistory(productsHistory[i]);
@@ -178,7 +178,7 @@ function renderProducts() {
 
     $("#searchProduct").show()
     $("#searchProductHistory").hide()
-     getMyStockage();
+    getMyStockage();
     if (products.length === 0) {
         document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
     } else { document.getElementById("home").style.backgroundImage = ""; }
@@ -195,11 +195,12 @@ function renderProductsHistory() {
     console.log("hahahahah")
 
     $("#productsTableHistory").html("")
-    
-     getMyStockage();
-    if(productsHistory.length===0){
-        document.getElementById("home").style.backgroundImage ="url('imgs/empty-box1.png')";
-    }else { document.getElementById("home").style.backgroundImage = "";}
+
+    getMyStockage();
+    if (productsHistory.length === 0) {
+
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+    } else { document.getElementById("home").style.backgroundImage = ""; }
     for (var i = 0; i < productsHistory.length; i++) {
         createProductHistory(productsHistory[i]);
     }
@@ -255,101 +256,138 @@ function initializeLocalStorage() {
     }
 }
 
-function filter(array,predicate){
-    var acc=[];
-    each(array,function(element){
-            if(predicate(element)){
-                acc.push(element)}});
+function filter(array, predicate) {
+    var acc = [];
+    each(array, function (element) {
+        if (predicate(element)) {
+            acc.push(element)
+        }
+    });
     return acc;
-    }
-    
-    function each(coll, func) { 
-           if (Array.isArray(coll)) { 
-                 for (var i = 0; i < coll.length; i++) { 
-                       func(coll[i], i); 
-                 } 
-           } else { 
-                 for (var key in coll) { 
-                       func(coll[key], key); 
-                 } 
-           } 
-     }
-function searchProducts(){
-    
-    var filteredProducts=[]
-    filteredProducts= filter(products,function(object){
-        if(object.name.toLowerCase().includes(document.getElementById("searchProduct").value.toLowerCase()))
-             
-       return object})
-
-
-    
-       $("#main").show()
-       $("#history").hide()
-       $("#productsTable").html("")
-   
-    //    getMyStockage();
-       if (filteredProducts.length === 0) {
-           document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
-       } else { document.getElementById("home").style.backgroundImage = ""; }
-       for (var i = 0; i < filteredProducts.length; i++) {
-           createProduct(filteredProducts[i]);
-       }
-       
-       $("#productsTable").show();
-   //
 }
-function searchProductsHistory(){
-    
-    var filteredProducts=[]
-    filteredProducts= filter(productsHistory,function(object){
-        if(object.name.toLowerCase().includes(document.getElementById("searchProductHistory").value.toLowerCase()))
-             
-       return object})
-       console.log("I am in history search function filtered=",filteredProducts)
+
+function each(coll, func) {
+    if (Array.isArray(coll)) {
+        for (var i = 0; i < coll.length; i++) {
+            func(coll[i], i);
+        }
+    } else {
+        for (var key in coll) {
+            func(coll[key], key);
+        }
+    }
+}
+function searchProducts() {
+
+    var filteredProducts = []
+    filteredProducts = filter(products, function (object) {
+        if (object.name.toLowerCase().includes(document.getElementById("searchProduct").value.toLowerCase()))
+
+            return object
+    })
 
 
-    
-       $("#main").hide()
-       $("#history").show()
-       $("#productsTableHistory").html("")
-   
+
+    $("#main").show()
+    $("#history").hide()
+    $("#productsTable").html("")
+
     //    getMyStockage();
-       if (filteredProducts.length === 0) {
-           document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
-       } else { document.getElementById("home").style.backgroundImage = ""; }
-       for (var i = 0; i < filteredProducts.length; i++) {
+    if (filteredProducts.length === 0) {
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+    } else { document.getElementById("home").style.backgroundImage = ""; }
+    for (var i = 0; i < filteredProducts.length; i++) {
+        createProduct(filteredProducts[i]);
+    }
+
+    $("#productsTable").show();
+    //
+}
+function searchProductsHistory() {
+
+    var filteredProducts = []
+    filteredProducts = filter(productsHistory, function (object) {
+        if (object.name.toLowerCase().includes(document.getElementById("searchProductHistory").value.toLowerCase()))
+
+            return object
+    })
+    console.log("I am in history search function filtered=", filteredProducts)
+
+
+
+    $("#main").hide()
+    $("#history").show()
+    $("#productsTableHistory").html("")
+
+    //    getMyStockage();
+    if (filteredProducts.length === 0) {
+        document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+    } else { document.getElementById("home").style.backgroundImage = ""; }
+    for (var i = 0; i < filteredProducts.length; i++) {
         createProductHistory(filteredProducts[i]);
-       }
+    }
+
+    $("#productsTableHistory").show();
+    //
+// function searchProductsHistory(){
+    
+//     var filteredProducts=[]
+//     filteredProducts= filter(productsHistory,function(object){
+//         if(object.name.toLowerCase().includes(document.getElementById("searchProductHistory").value.toLowerCase()))
+             
+//        return object})
+//        console.log("I am in history search function filtered=",filteredProducts)
+
+
+    
+//        $("#main").hide()
+//        $("#history").show()
+//        $("#productsTableHistory").html("")
+   
+//     //    getMyStockage();
+//        if (filteredProducts.length === 0) {
+//            document.getElementById("home").style.backgroundImage = "url('imgs/empty-box1.png')";
+//        } else { document.getElementById("home").style.backgroundImage = ""; }
+//        for (var i = 0; i < filteredProducts.length; i++) {
+//         createProductHistory(filteredProducts[i]);
+//        }
        
-       $("#productsTableHistory").show();
+//        $("#productsTableHistory").show();
    //
 }
 // Get the input field
 var input = document.getElementById("searchProduct");
 
 // Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    searchProducts()
-  }
+input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        searchProducts()
+    }
 });
 // Get the input field
 var inputHistory = document.getElementById("searchProductHistory");
 
 // Execute a function when the user releases a key on the keyboard
-inputHistory.addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    searchProductsHistory()
-  }
+inputHistory.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        searchProductsHistory()
+    }
+// inputHistory.addEventListener("keyup", function(event) {
+//   // Number 13 is the "Enter" key on the keyboard
+//   if (event.keyCode === 13) {
+//     // Cancel the default action, if needed
+//     event.preventDefault();
+//     // Trigger the button element with a click
+//     searchProductsHistory()
+//   }
 });
 function displayAbout(){
 $("#main").hide()

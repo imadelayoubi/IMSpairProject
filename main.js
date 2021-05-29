@@ -140,7 +140,7 @@ function createProductHistory(product) {
 
         var r = confirm("Are you sure to restore this product!\nEither OK or Cancel.\n");
         if (r == true) {
-            for (var i = 0; i < products.length; i++) {
+            for (var i = 0; i < productsHistory.length; i++) {
                 if (productsHistory[i].name === product.name) {
                     productsHistory.splice(i, 1)
                     products.push(product)
@@ -403,15 +403,16 @@ function displayAbout() {
     $("#main").hide()
     $("#history").hide()
     $("#about").show()
+    $("#client").hide()
 }
 function createProductClient(product) {
-console.log("I am in create product for client,", product)
+    console.log("I am in create product for client,", product)
     $("#productsTableClient").append('<tr id=' + "row" + counter + ' class ="row"></tr>')
     $("#row" + counter).append('<td class="idspace">' + Number(products.indexOf(product) + 1) + '</td>')
     $("#row" + counter).append('<td class="namespace">' + product.name + '</td>')
-    
+
     $("#row" + counter).append('<td style="background-color: #04aa6d;"><button id=btninfo' + counter + ' class="btn grnbtn" ><i class="fa fa-info"></i></button></tr>')
-    
+
 
 
 
@@ -432,13 +433,13 @@ console.log("I am in create product for client,", product)
     counter++;
 }
 function renderProductsClient() {
-   
+
     $("#client").show()
     $("#main").hide()
     $("#productsTableClient").html("")
     $("#history").hide()
     $("#about").hide()
-    
+
 
     $("#searchProduct").hide()
     $("#searchProductHistory").hide()
